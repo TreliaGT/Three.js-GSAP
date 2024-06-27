@@ -64,9 +64,6 @@ const ThreeD = () => {
 
                 scene.add(model);
                 modelRef.current = model; // Store model in ref for access outside of loader callback
-                
-                container.addEventListener('mouseenter', onMouseEnter);
-                container.addEventListener('mouseleave', onMouseLeave);
                 // Initialize GSAP animation timeline once model is loaded
                 initAnimation();
             },
@@ -136,17 +133,7 @@ const ThreeD = () => {
             });
     };
 
-    const onMouseEnter = () => {
-        if (modelRef.current) {
-            gsap.to(modelRef.current.position, { y: '+=0.2', duration: 0.5, yoyo: true, repeat: 1, ease: "power1.inOut" });
-        }
-    };
-
-    const onMouseLeave = () => {
-        if (modelRef.current) {
-            gsap.to(modelRef.current.position, { y: '-=0.2', duration: 0.5, yoyo: true, repeat: 1, ease: "power1.inOut" });
-        }
-    };
+  
         // Scroll event handler using GSAP
         const handleScroll = () => {
             const scrollY = window.scrollY;
